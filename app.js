@@ -7,6 +7,8 @@ const data = [
   { id: 4, name: "Joe Doe" },
 ];
 
+const PORT = process.env.PORT || 3000;
+
 const server = createServer((req, res) => {
   res.setHeader("access-control-allow-origin", "*");
   res.setHeader("access-control-allow-methods", "GET, POST");
@@ -25,4 +27,6 @@ const server = createServer((req, res) => {
   }
 });
 
-export default server;
+server.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
