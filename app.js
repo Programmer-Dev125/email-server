@@ -10,7 +10,6 @@ const data = [
 const server = createServer((req, res) => {
   res.setHeader("access-control-allow-origin", "*");
   res.setHeader("access-control-allow-methods", "GET, POST");
-
   if (req.method === "OPTIONS") {
     res.writeHead(200);
     res.end();
