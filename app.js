@@ -7,6 +7,8 @@ const mongoUrl = process.env.MONGO_URL;
 
 const conn = mongoose.createConnection(mongoUrl, {
   dbName: process.env.DB_NAME,
+  user: process.env.MONGO_USER,
+  pass: process.env.MONGO_PASS,
 });
 const isCollection = conn.model(
   "ACustomModel",
