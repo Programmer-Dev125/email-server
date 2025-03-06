@@ -1,29 +1,42 @@
 import { createServer } from "node:http";
-
-const data = [
-  { id: 1, name: "John Doe" },
-  { id: 2, name: "Jane Doe" },
-  { id: 3, name: "Josh Doe" },
-  { id: 4, name: "Joe Doe" },
-];
+import sgMail from "@sendgrid/mail";
 
 const PORT = process.env.PORT || 3000;
 
 const server = createServer((req, res) => {
   res.setHeader("access-control-allow-origin", "*");
   res.setHeader("access-control-allow-methods", "GET, POST");
+  res.setHeader("access-control-allow-headers", "content-type");
+
   if (req.method === "OPTIONS") {
     res.writeHead(200);
     res.end();
     return;
   }
 
-  if (req.method === "GET") {
-    res.writeHead(200, { "content-type": "application/json" });
-    res.end(JSON.stringify(data));
+  if (req.method === "POST") {
+    let isBody;
+    req.on("data", (data) => {
+      isBody = JSON.parse(data.toString());
+    });
+    req.on("end", async () => {
+      const isSend = await sgMail.send({
+        to: "programmerdev125@gmail.com",
+        from: isBody.email,
+        subject: isBody.subject,
+        text: isBody.name + `\n` + isBody.message,
+      });
+      if (isSend) {
+        res.writeHead(200, { "content-type": "application/json" });
+        res.end(JSON.stringify({ success: "Email Sent Successfully" }));
+      } else {
+        res.writeHead(400, { "content-type": "application/json" });
+        res.end(JSON.stringify({ error: "Error Sending Email" }));
+      }
+      server.close();
+    });
   } else {
     res.writeHead(405, { "content-type": "application/json" });
-    res.end(JSON.stringify({ error: "Incorrect Request Method" }));
   }
 });
 

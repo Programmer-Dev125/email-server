@@ -18,5 +18,8 @@
     "url": "https://github.com/Programmer-Dev125/email-server/issues"
   },
   "homepage": "https://github.com/Programmer-Dev125/email-server#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "@sendgrid/mail": "^8.1.4"
+  }
 }

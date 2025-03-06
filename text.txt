@@ -1,0 +1,26 @@
+
+Host CNAME em4575.httpsemail-server-production-5068.up.railway.app	
+
+Value u51055631.wl132.sendgrid.net	
+
+Copy
+CNAME	s1._domainkey.httpsemail-server-production-5068.up.railway.app	
+
+Copy
+s1.domainkey.u51055631.wl132.sendgrid.net	
+
+Copy
+CNAME	s2._domainkey.httpsemail-server-production-5068.up.railway.app	
+
+Copy
+s2.domainkey.u51055631.wl132.sendgrid.net	
+
+Copy
+TXT	_dmarc.httpsemail-server-production-5068.up.railway.app	
+
+Copy
+v=DMARC1; p=reject; sp=reject; rua=mailto:re+d3603030eb96@inbound.dmarcdigests.com; pct=100	
+
+Copy
+
+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
