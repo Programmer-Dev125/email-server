@@ -31,11 +31,7 @@ const server = createServer((req, res) => {
   res.setHeader("access-control-allow-headers", "content-type");
 
   if (req.method === "OPTIONS" && req.url === "/contact") {
-    res.writeHead(200, {
-      "access-control-allow-origin": "http://localhost:5173",
-      "access-control-allow-methods": "POST, OPTIONS",
-      "access-control-allow-headers": "content-type",
-    });
+    res.writeHead(204);
     res.end();
     return;
   }
