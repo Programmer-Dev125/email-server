@@ -28,15 +28,11 @@ const transport = mailer.createTransport({
 });
 
 const server = createServer((req, res) => {
-  res.setHeader("access-control-allow-origin", "http://localhost:5173");
-  res.setHeader("access-control-allow-methods", "POST, OPTIONS");
-  res.setHeader("access-control-allow-headers", "content-type");
-
   if (req.method === "OPTIONS" && req.url === "/contact") {
     res.writeHead(204, {
-      "access-control-allow-origin": "http://localhost:5173",
-      "access-control-allow-methods": "POST, OPTIONS",
-      "access-control-allow-headers": "content-type",
+      "Access-Control-Allow-Origin": "http://localhost:5173",
+      "Access-Control-Allow-Methods": "POST, OPTIONS",
+      "Access-Control-Allow-Headers": "Content-Type",
     });
     res.end();
     return;
@@ -69,25 +65,25 @@ const server = createServer((req, res) => {
           });
           if (hasMailSent) {
             res.writeHead(201, {
-              "content-type": "application/json",
+              "Content-Type": "application/json",
             });
             res.end(
               JSON.stringify({ success: "Your mail has already been sent" })
             );
           }
         } else {
-          res.writeHead(400, { "content-type": "application/json" });
+          res.writeHead(400, { "Content-Type": "application/json" });
           res.end(JSON.stringify({ error: "Failed to send message" }));
         }
       } else {
-        res.writeHead(409, { "content-type": "application/json" });
+        res.writeHead(409, { "Content-Type": "application/json" });
         res.end(
           JSON.stringify({ error: "You've previously submitted an email" })
         );
       }
     });
   } else {
-    res.writeHead(405, { "content-type": "application/json" });
+    res.writeHead(405, { "Content-Type": "application/json" });
     res.end(JSON.stringify({ error: "header not permitted" }));
   }
 });
