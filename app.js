@@ -3,10 +3,10 @@ import mongoose, { Schema } from "mongoose";
 import mailer from "nodemailer";
 
 const PORT = process.env.PORT || 3000;
-const mongoUrl = process.env.MONGO_PUBLIC_URL;
+const mongoUrl = process.env.MONGO_URL;
 
 const conn = mongoose.createConnection(mongoUrl, {
-  dbName: "test",
+  dbName: process.env.DB_NAME,
 });
 const isCollection = conn.model(
   "ACustomModel",
