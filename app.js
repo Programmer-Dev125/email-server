@@ -67,9 +67,6 @@ const server = createServer((req, res) => {
           });
           if (hasMailSent) {
             res.writeHead(201, {
-              "Access-Control-Allow-Origin": "http://localhost:5173",
-              "Access-Control-Allow-Methods": "POST, OPTIONS",
-              "Access-Control-Allow-Headers": "Content-Type",
               "Content-Type": "application/json",
             });
             res.end(
@@ -78,25 +75,16 @@ const server = createServer((req, res) => {
           }
         } else {
           res.writeHead(400, {
-            "Access-Control-Allow-Origin": "http://localhost:5173",
-            "Access-Control-Allow-Methods": "POST, OPTIONS",
-            "Access-Control-Allow-Headers": "Content-Type",
             "Content-Type": "application/json",
           });
           res.end(JSON.stringify({ error: "Failed to send message" }));
         }
       } else {
         res.writeHead(409, {
-          "Access-Control-Allow-Origin": "http://localhost:5173",
-          "Access-Control-Allow-Methods": "POST, OPTIONS",
-          "Access-Control-Allow-Headers": "Content-Type",
           "Content-Type": "application/json",
         });
         res.end(
           JSON.stringify({
-            "Access-Control-Allow-Origin": "http://localhost:5173",
-            "Access-Control-Allow-Methods": "POST, OPTIONS",
-            "Access-Control-Allow-Headers": "Content-Type",
             error: "You've previously submitted an email",
           })
         );
@@ -104,9 +92,6 @@ const server = createServer((req, res) => {
     });
   } else {
     res.writeHead(405, {
-      "Access-Control-Allow-Origin": "http://localhost:5173",
-      "Access-Control-Allow-Methods": "POST, OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type",
       "Content-Type": "application/json",
     });
     res.end(JSON.stringify({ error: "header not permitted" }));
