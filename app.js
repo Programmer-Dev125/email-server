@@ -30,7 +30,7 @@ const server = createServer((req, res) => {
   res.setHeader("access-control-allow-methods", "GET, POST, OPTIONS");
   res.setHeader("access-control-allow-headers", "content-type");
 
-  if (req.method === "OPTIONS") {
+  if (req.method === "OPTIONS" && req.url === "/contact") {
     res.writeHead(200);
     res.end();
     return;
