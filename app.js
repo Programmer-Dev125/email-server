@@ -30,7 +30,7 @@ const transport = mailer.createTransport({
 });
 
 const server = createServer((req, res) => {
-  if (req.method === "OPTIONS" && req.url === "/contact") {
+  if (req.method === "OPTIONS") {
     res.writeHead(204, {
       "Access-Control-Allow-Origin": "http://localhost:5173",
       "Access-Control-Allow-Methods": "POST, OPTIONS",
