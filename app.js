@@ -40,7 +40,7 @@ const server = createServer((req, res) => {
     return;
   }
 
-  if (req.method === "POST" && req.url === "/contact") {
+  if (req.method === "POST") {
     let isBody;
     req.on("data", (data) => {
       isBody = JSON.parse(data.toString());
