@@ -38,6 +38,7 @@ const server = createServer((req, res) => {
     });
   } else {
     res.writeHead(405, { "content-type": "application/json" });
+    res.end(JSON.stringify({ error: "header not permitted" }));
   }
 });
 
