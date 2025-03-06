@@ -1,11 +1,9 @@
 import { createServer } from "node:http";
-import dotenv from "dotenv";
 import sgMail from "@sendgrid/mail";
-
-dotenv.config();
 
 const PORT = process.env.PORT || 3000;
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
 const server = createServer((req, res) => {
   res.setHeader("access-control-allow-origin", "http://localhost:5173/contact");
   res.setHeader("access-control-allow-methods", "GET, POST");
