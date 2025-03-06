@@ -22,8 +22,8 @@ const isCollection = conn.model(
 const transport = mailer.createTransport({
   service: "Gmail",
   auth: {
-    user: "programmerdev125@gmail.com",
-    pass: "ytez etpu tnvh ogcu",
+    user: process.env.MY_USER,
+    pass: process.env.MY_KEY,
   },
 });
 
@@ -59,7 +59,7 @@ const server = createServer((req, res) => {
         if (hasInserted) {
           const hasMailSent = await transport.sendMail({
             to: isBody.email,
-            from: process.env.EMAIL_USER,
+            from: process.env.MY_USER,
             subject: "From. Abdul Ahad",
             text: "Hello! Your message have been received will contact you shortly after. From Abdul Ahad",
           });
