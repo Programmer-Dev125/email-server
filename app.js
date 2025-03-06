@@ -6,7 +6,7 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 const server = createServer((req, res) => {
   res.setHeader("access-control-allow-origin", "http://localhost:5173/contact");
-  res.setHeader("access-control-allow-methods", "GET, POST");
+  res.setHeader("access-control-allow-methods", "GET, POST, OPTIONS");
   res.setHeader("access-control-allow-headers", "content-type");
 
   if (req.method === "OPTIONS") {
@@ -15,7 +15,7 @@ const server = createServer((req, res) => {
     return;
   }
 
-  if (req.method === "POST") {
+  if (req.method === "POST" && req.url === "/contact") {
     let isBody;
     req.on("data", (data) => {
       isBody = JSON.parse(data.toString());
