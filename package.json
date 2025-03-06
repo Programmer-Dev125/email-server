@@ -20,6 +20,7 @@
   "homepage": "https://github.com/Programmer-Dev125/email-server#readme",
   "description": "",
   "dependencies": {
-    "@sendgrid/mail": "^8.1.4"
+    "@sendgrid/mail": "^8.1.4",
+    "dotenv": "^16.4.7"
   }
 }
