@@ -5,7 +5,9 @@ import mailer from "nodemailer";
 const PORT = process.env.PORT || 3000;
 const mongoUrl = process.env.MONGO_PUBLIC_URL;
 
-const conn = mongoose.createConnection(mongoUrl);
+const conn = mongoose.createConnection(mongoUrl, {
+  dbName: "test",
+});
 const isCollection = conn.model(
   "ACustomModel",
   new Schema({
